@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  bore-server:
+    image: ekzhang/bore:latest
+    command: server
+    ports:
+      - "7835:7835"    # Control port
+      - "1024-65535:1024-65535"  # Tunnel ports range (adjust as needed)
+    restart: unless-stopped
+    environment:
+      # Uncomment and set if you want authentication
+      # BORE_SECRET: your_secret
+    # Remove or adjust if using a private network
+    # networks:
+    #   - yournetwork
+    # To ensure multi-arch support, Docker will pull the correct image for the host architecture
+    # If you want to build your own multi-arch image, let me know!
+
+# networks:
+#   yournetwork:
+#     driver: bridge
